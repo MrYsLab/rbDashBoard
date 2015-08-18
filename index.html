@@ -169,9 +169,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
                         var left = msg['left'];
                         var right = msg['right'];
                         Window.gauge4.value = right;
+                        Window.gauge4.draw();
                         Window.gauge2.value = left;
                         Window.gauge2.draw();
-                        Window.gauge4.draw();
+
                         break;
                     case 'ir1':
                         val = msg['data'];

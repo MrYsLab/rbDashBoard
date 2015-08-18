@@ -150,7 +150,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
             socket.onmessage = function (message) {
 
                 var msg = JSON.parse(message.data);
-
+                console.log(message.data);
                 switch (msg['info']) {
                     case 'axis':
                         var xx = msg['x'];
@@ -168,7 +168,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
                     case 'encoders':
                         var left = msg['left'];
                         var right = msg['right'];
-                        console.log('left = ' + left + 'right =' + right)
+                        console.log('left = ' + left + 'right = ' + right);
                         Window.gauge4.value = right;
                         Window.gauge4.draw();
                         Window.gauge2.value = left;

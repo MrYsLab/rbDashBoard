@@ -168,8 +168,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
                     case 'encoders':
                         var left = msg['left'];
                         var right = msg['right'];
-                        Window.gauge2.value = right;
-                        Window.gauge4.value = left;
+                        Window.gauge4.value = right;
+                        Window.gauge2.value = left;
                         Window.gauge2.draw();
                         Window.gauge4.draw();
                         break;
@@ -525,7 +525,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
         Window.gauge2 = new RGraph.Gauge({
             id: 'cvs2',
             min: 0,
-            max: 200,
+            max: 300,
             value: 0,
             options: {
                 angles: {
@@ -791,7 +791,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
         Window.gauge4 = new RGraph.Gauge({
             id: 'cvsr2',
             min: 0,
-            max: 200,
+            max: 300,
             value: 0,
             options: {
                 angles: {

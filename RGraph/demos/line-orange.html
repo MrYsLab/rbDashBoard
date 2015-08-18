@@ -1,0 +1,229 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <title>A Line chart with a custom line</title>
+    
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="A Line chart with a custom line" />
+     
+</head>
+<body>
+
+    <h1>A Line chart with a custom line</h1>
+
+    <canvas id="cvs" width="800" height="250">[No canvas support]</canvas>
+    
+    <script>
+        $(document).ready(function ()
+        {
+            var color = '#E9B34E';
+            
+            var line = new RGraph.Line({
+                id: 'cvs',
+                data: [
+                    [7000,26000,11000,16000,28000,13000,23000,28500,null,null,null,null],
+                    [null,null,null,null,null,null,null,28500,11000,14000,9000,10000],
+                ],
+                options: {
+                    colors: ['black',color],
+                    shadow: false,
+                    noaxes: true,
+                    'background.grid.vlines': false,
+                    'background.grid.autofit.numhlines': 3,
+                    'background.grid.border': false,
+                    numyticks: 3,
+                    'ylabels.count': 3,
+                    ymax: 30000,
+                    'gutter.top': 50,
+                    'gutter.left': 100,
+                    'units.pre': '£',
+                    linewidth: 3,
+                    labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+                    tickmarks: 'dot',
+                    'tickmarks.dot.stroke': 'white',
+                    //'tickmarks.dot.fill': 'red',
+                    'tickmarks.dot.linewidth': 0,
+                    'tickmarks.dot.stroke': 'white',
+                    ticksize: 0,
+                    'text.size': 14,
+                    'text.font': 'Segoe UI',
+                    'scale.zerostart': true,
+                    shadow: true,
+                    'shadow.offsetx': 0,
+                    'shadow.offsety': 0,
+                    'shadow.blur': 0
+                }
+            }).on('draw', function (obj)
+            {
+                // Draw the vertical line
+                var x = obj.coords2[1][7][0];
+                var y = obj.coords2[1][7][1];
+
+                // Draw thevertical line above/below the 8th point
+                RGraph.path(obj, ['b','m',x,25,'l',x,y - 10,'s',color]);
+                RGraph.path(obj, ['b','m',x,y + 10,'l',x,230,'s',color]);
+                
+                obj.context.fillStyle = color;
+                
+                // Draw the text above the line
+                RGraph.text2(obj, {
+                    'x': x,
+                    'y': 25,
+                    'text': 'TODAY',
+                    'size': 8,
+                    'halign': 'center',
+                    'bold': true
+                });
+                
+                // Draw the text above the line
+                RGraph.text2(obj, {
+                    color: 'black',
+                    'x': 65,
+                    'y': 30,
+                    'text': 'REVENUE',
+                    'size': 14,
+                    'halign': 'center',
+                    'bold': true
+                });
+
+                
+            }).trace2({frames: 50}, function (obj)
+            {
+                obj.animate({
+                    'frames': 30,
+                    'ticksize': 7,
+                    'tickmarks.dot.linewidth': 3,
+                    'shadow.offsetx': 1,
+                    'shadow.offsety': 1,
+                    'shadow.blur': 2
+                });
+            });
+        });
+    </script>
+
+
+
+    <p></p>
+
+    This goes in the documents header (or you could place it just above the jQuery ready event code):
+    <pre class="code">
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.common.core.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.line.js"&gt;&lt;/script&gt;
+</pre>
+    
+    Put this where you want the chart to show up:
+    <pre class="code">
+&lt;canvas id="cvs" width="800" height="250"&gt;
+    [No canvas support]
+&lt;/canvas&gt;
+</pre>
+
+    This is the code that generates the chart. Because it's using the jQuery ready event you can put this at the
+    bottom of the document:
+    <pre class="code">
+&lt;script&gt;
+    $(document).ready(function ()
+    {
+        var color = '#E9B34E';
+        
+        var line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [7000,26000,11000,16000,28000,13000,23000,28500,null,null,null,null],
+                [null,null,null,null,null,null,null,28500,11000,14000,9000,10000],
+            ],
+            options: {
+                colors: ['black',color],
+                shadow: false,
+                noaxes: true,
+                'background.grid.vlines': false,
+                'background.grid.autofit.numhlines': 3,
+                'background.grid.border': false,
+                numyticks: 3,
+                'ylabels.count': 3,
+                ymax: 30000,
+                'gutter.top': 50,
+                'gutter.left': 100,
+                'units.pre': '£',
+                linewidth: 3,
+                labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+                tickmarks: 'dot',
+                'tickmarks.dot.stroke': 'white',
+                //'tickmarks.dot.fill': 'red',
+                'tickmarks.dot.linewidth': 0,
+                'tickmarks.dot.stroke': 'white',
+                ticksize: 0,
+                'text.size': 14,
+                'text.font': 'Segoe UI',
+                'scale.zerostart': true,
+                shadow: true,
+                'shadow.offsetx': 0,
+                'shadow.offsety': 0,
+                'shadow.blur': 0
+            }
+        }).on('draw', function (obj)
+        {
+            // Draw the vertical line
+            var x = obj.coords2[1][7][0];
+            var y = obj.coords2[1][7][1];
+
+            // Draw thevertical line above/below the 8th point
+            RGraph.path(obj, ['b','m',x,25,'l',x,y - 10,'s',color]);
+            RGraph.path(obj, ['b','m',x,y + 10,'l',x,230,'s',color]);
+            
+            obj.context.fillStyle = color;
+            
+            // Draw the text above the line
+            RGraph.text2(obj, {
+                'x': x,
+                'y': 25,
+                'text': 'TODAY',
+                'size': 8,
+                'halign': 'center',
+                'bold': true
+            });
+            
+            // Draw the text above the line
+            RGraph.text2(obj, {
+                color: 'black',
+                'x': 65,
+                'y': 30,
+                'text': 'REVENUE',
+                'size': 14,
+                'halign': 'center',
+                'bold': true
+            });
+
+            
+        }).trace2({frames: 50}, function (obj)
+        {
+            obj.animate({
+                'frames': 30,
+                'ticksize': 7,
+                'tickmarks.dot.linewidth': 3,
+                'shadow.offsetx': 1,
+                'shadow.offsety': 1,
+                'shadow.blur': 2
+            });
+        });
+    });
+&lt;/script&gt;
+</pre>
+
+
+    <p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.rgraph.net" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.rgraph.net', null, 'top=50,left=50,width=600,height=368'); return false"><img src="../images/facebook-large.png" width="200" height="43" alt="Share on Facebook" border="0" title="Visit the RGraph Facebook page" /></a>
+        <a href="https://twitter.com/_rgraph" target="_blank" onclick="window.open('https://twitter.com/_rgraph', null, 'top=50,left=50,width=700,height=400'); return false"><img src="../images/twitter-large.png" width="200" height="43" alt="Share on Twitter" border="0" title="Mention RGraph on Twitter" /></a>
+        <a href="https://plus.google.com/107668942726927917971/posts" target="_blank" onclick="window.open('https://plus.google.com/107668942726927917971/posts', null, 'top=20,left=20,width=950,height=600'); return false"><img src="../images/google-plus--large.png" width="230" height="43" alt="Share on Google Plus" border="0" title="Mention RGraph on Google Plus" /></a>
+    </p>
+
+</body>
+</html>

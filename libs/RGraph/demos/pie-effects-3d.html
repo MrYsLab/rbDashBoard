@@ -1,0 +1,158 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>Pie chart with border</title>
+    
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="A Pie chart that has been made to look 3D-esque by transforming the canvas before drawing" />
+     
+</head>
+<body>
+
+    <h1>3D Pie chart</h1>
+    
+    <p>
+        This is an example of a 3D Pie chart effect then can be accomplished with a few extra lines of code.
+    </p>
+
+    <canvas id="cvs" width="450" height="300">[No canvas support]</canvas>
+
+    <script>
+        $(document).ready(function ()
+        {
+            var pie = new RGraph.Pie({
+                id: 'cvs',
+                data: [4,5,5,7,5,8,4,9],
+                options: {
+                    strokestyle: '#e8e8e8',
+                    linewidth: 2,
+                    shadow: {
+                        self: true,
+                        offsetx: 0,
+                        offsety: 15,
+                        color: '#aaa'
+                    },
+                    exploded: 10,
+                    radius: 80,
+                    tooltips: {
+                        self: ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'],
+                        coords: {
+                            page: true
+                        }
+                    },
+                    'labels': {
+                        self: ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'],
+                        sticks: {
+                            self: true,
+                            length: 15
+                        }
+                    }
+                }
+            })
+            
+            // This is the factor that the canvas is scaled by
+            var factor = 1.5;
+        
+            // Set the transformation of the canvas - a scale up by the factor (which is 1.5 and a simultaneous translate
+            // so that the Pie appears in the center of the canvas
+            pie.context.setTransform(factor,0,0,1,((pie.canvas.width * factor) - pie.canvas.width) * -0.5,0);
+        
+            //pie.Draw();
+            pie.roundRobin({frames: 30})
+        })
+    </script>
+
+
+
+
+
+    <p></p>
+
+    This goes in the documents header (or you could place it just above the jQuery ready event code):
+    <pre class="code">
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.common.core.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.common.dynamic.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.common.tooltips.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.common.effects.js"&gt;&lt;/script&gt;
+&lt;script src="RGraph.pie.js"&gt;&lt;/script&gt;
+</pre>
+    
+    Put this where you want the chart to show up:
+    <pre class="code">
+&lt;canvas id="cvs" width="450" height="300"&gt;
+    [No canvas support]
+&lt;/canvas&gt;
+</pre>
+
+    This is the code that generates the chart. Because it's using the jQuery ready event you can put this at the
+    bottom of the document:
+    <pre class="code">
+&lt;script&gt;
+    $(document).ready(function ()
+    {
+        var pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [4,5,5,7,5,8,4,9],
+            options: {
+                strokestyle: '#e8e8e8',
+                linewidth: 2,
+                shadow: {
+                    self: true,
+                    offsetx: 0,
+                    offsety: 15,
+                    color: '#aaa'
+                },
+                exploded: 10,
+                radius: 80,
+                tooltips: {
+                    self: ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'],
+                    coords: {
+                        page: true
+                    }
+                },
+                'labels': {
+                    self: ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'],
+                    sticks: {
+                        self: true,
+                        length: 15
+                    }
+                }
+            }
+        })
+        
+        // This is the factor that the canvas is scaled by
+        var factor = 1.5;
+    
+        // Set the transformation of the canvas - a scale up by the factor (which is 1.5 and a simultaneous translate
+        // so that the Pie appears in the center of the canvas
+        pie.context.setTransform(factor,0,0,1,((pie.canvas.width * factor) - pie.canvas.width) * -0.5,0);
+    
+        //pie.Draw();
+        pie.roundRobin({frames: 30})
+    });
+&lt;/script&gt;
+</pre>
+    <p>        
+        <a href="">&laquo; Back</a>
+    </p>
+
+
+    <p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.rgraph.net" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.rgraph.net', null, 'top=50,left=50,width=600,height=368'); return false"><img src="../images/facebook-large.png" width="200" height="43" alt="Share on Facebook" border="0" title="Visit the RGraph Facebook page" /></a>
+        <a href="https://twitter.com/_rgraph" target="_blank" onclick="window.open('https://twitter.com/_rgraph', null, 'top=50,left=50,width=700,height=400'); return false"><img src="../images/twitter-large.png" width="200" height="43" alt="Share on Twitter" border="0" title="Mention RGraph on Twitter" /></a>
+        <a href="https://plus.google.com/107668942726927917971/posts" target="_blank" onclick="window.open('https://plus.google.com/107668942726927917971/posts', null, 'top=20,left=20,width=950,height=600'); return false"><img src="../images/google-plus--large.png" width="230" height="43" alt="Share on Google Plus" border="0" title="Mention RGraph on Google Plus" /></a>
+    </p>
+
+</body>
+</html>

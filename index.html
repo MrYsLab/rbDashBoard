@@ -125,7 +125,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
         var d = new Date();
         var start_time = d.getTime();
-        console.log('start_time = ' + start_time);
+        // console.log('start_time = ' + start_time);
         var time_sample;
         var diff_time;
 
@@ -168,7 +168,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
                     case 'encoders':
                         var left = msg['left'];
                         var right = msg['right'];
-                        console.log('left = ' + left + 'right = ' + right);
+                        // console.log('left = ' + left + 'right = ' + right);
                         Window.gauge4.value = right;
                         Window.gauge4.draw();
                         Window.gauge2.value = left;
@@ -891,8 +891,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
         var left_command = formdata.slice(firstIndex + 1, secIndex);
         console.log('left_command: ' + left_command);
 
-        console.log(formdata);
-        console.log('index 1: ' + firstIndex);
+        // console.log(formdata);
+        // console.log('index 1: ' + firstIndex);
         var thirdIndex = formdata.lastIndexOf('=');
 
         var right_command = formdata.slice(thirdIndex + 1, formdata.length);
@@ -927,6 +927,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 </script>
 
 
-</
-body >
+</body >
 < / html >

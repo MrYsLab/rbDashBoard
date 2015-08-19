@@ -1,9 +1,9 @@
 ![logo](https://raw.github.com/MrYsLab/rbDashBoard/gh-pages/images/rbDash.png)
 ======
 # What is rbDashboard?
-rbDashboard allow you to 
+rbDashboard allows you to 
 control and monitor all of the sensors and actuators of the [SparkFun RedBot SIK] 
-(https://www.sparkfun.com/products/12649) all from the [rbDashBoard web page](http://MrYsLab.github.io/rbDashBoard).
+(https://www.sparkfun.com/products/12649) all from the [included web page](http://MrYsLab.github.io/rbDashBoard).
 ## Simulataneously:
 
 * Control each motor's speed and direction.

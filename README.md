@@ -1,6 +1,5 @@
 ![logo](https://raw.github.com/MrYsLab/rbDashBoard/gh-pages/images/rbDash.png)
 ======
-# UNDER CONSTRUCTION
 
 # What is rbDashboard?
 rbDashboard allows you to 

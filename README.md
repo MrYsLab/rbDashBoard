@@ -5,6 +5,8 @@
 rbDashboard allows you to 
 control and monitor all of the sensors and actuators of the [SparkFun RedBot SIK] 
 (https://www.sparkfun.com/products/12649) all from a [web page](http://MrYsLab.github.io/rbDashBoard).
+
+[Check out the Wiki pages for installation and usage instructions.](https://github.com/MrYsLab/rbDashBoard/wiki)
 ## Simulataneously:
 
 * Control each motor's speed and direction.

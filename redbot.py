@@ -110,7 +110,7 @@ if __name__ == '__main__':
     factory.protocol.my_core = my_core
 
     new = 2
-    # url = "file:///home/afy/PycharmProjects/pymata_aio/examples/sparkfun_redbot/rbDash.html"
+
     url = "http://MrYsLab.github.io/rbDashBoard"
 
     webbrowser.open(url, new=new)

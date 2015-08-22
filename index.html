@@ -48,28 +48,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
             </div>
           </div>
           <div>
-              <br>
-              <b>Select speed by clicking</b>
-              <br>
-              <b> on the desired speed above,</b>
-              <br>
-              <b>then click <em>Submit Now.</em></b>
-              <br>
-              <b>Both motors will updated.</b>
-              <br>
-              <form name="left_motor" action="">
-                  <fieldset style="width: 200px; height: 140px;">
-                      <legend>Motor Operation</legend>
-                      <input type="radio" name="leftMotor" checked="checked" value="Coast"/>Coast<br/>
-                      <input type="radio" name="leftMotor" value="Brake"/>Brake<br/>
-                      <input type="radio" name="leftMotor" value="Forward"/>Run Forward <br/>
-                      <input type="radio" name="leftMotor" value="Reverse"/>Run Reverse<br/>
-                      <input type="radio" name="leftMotor" value="NoChange"/>No Change<br/>
-                      <input type="button" value="Submit Now" onclick="motorControl();"/>
-                  </fieldset>
-              </form>
+          <p class="gauge-instructions">
+              Select speed by clicking on the desired speed above, then click <em>Submit Now.</em> Both motors will updated.
+          </p>
+          <form name="left_motor" action="">
+              <fieldset>
+                  <legend>Motor Operation</legend>
+                  <input type="radio" name="leftMotor" checked="checked" value="Coast"/>Coast<br/>
+                  <input type="radio" name="leftMotor" value="Brake"/>Brake<br/>
+                  <input type="radio" name="leftMotor" value="Forward"/>Run Forward <br/>
+                  <input type="radio" name="leftMotor" value="Reverse"/>Run Reverse<br/>
+                  <input type="radio" name="leftMotor" value="NoChange"/>No Change<br/>
+                  <input type="button" class="btn btn-success btn-sm" value="Submit Now" onclick="motorControl();"/>
+              </fieldset>
+          </form>
           </div>
-          <br> <br>
+
       </div>
       <div class="col-md-4 col-sm-6 panel">
           <h2>Accelerometer (g's)</h2>
@@ -92,19 +86,35 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
           </div>
           <hr>
           <h3>Bumpers</h3>
-          <textarea style="resize: none;" id="abump" name="bumpa" cols="12" rows="1" readonly>Accelerometer</textarea>
-          <textarea style="resize: none;" id="lbump" name="bumpl" cols="12" rows="1" readonly>Left Bumper</textarea>
-          <textarea style="resize: none;" id="rbump" name="bumpr" cols="12" rows="1" readonly>Right Bumper</textarea>
+          <div class="row">
+            <div class="col-xs-4">
+              <textarea style="resize: none;" id="abump" name="bumpa" cols="12" rows="1" readonly>Accelerometer</textarea>
+            </div>
+            <div class="col-xs-4">
+              <textarea style="resize: none;" id="lbump" name="bumpl" cols="12" rows="1" readonly>Left Bumper</textarea>
+            </div>
+            <div class="col-xs-4">
+              <textarea style="resize: none;" id="rbump" name="bumpr" cols="12" rows="1" readonly>Right Bumper</textarea>
+            </div>
+          </div>
           <hr>
-          <h2>IR Sensors</h2>
-          <b>Left:</b>
-          <textarea id="ir1" style="resize:none" name="ir1x" cols="5" rows="1" readonly>0</textarea>
-          <b>Center:</b>
-          <textarea id="ir2" style="resize:none" name="ir2x" cols="5" rows="1" readonly>0</textarea>
-          <b>Right:</b>
-          <textarea id="ir3" style="resize:none" name="ir3x" cols="5" rows="1" readonly>0</textarea>
+          <h3>IR Sensors</h3>
+          <div class="row">
+            <div class="col-xs-4">
+              Left:<br>
+              <textarea id="ir1" style="resize:none" name="ir1x" cols="5" rows="1" readonly>0</textarea>
+            </div>
+            <div class="col-xs-4">
+              Center:<br>
+              <textarea id="ir2" style="resize:none" name="ir2x" cols="5" rows="1" readonly>0</textarea>
+            </div>
+            <div class="col-xs-4">
+              Right:<br>
+              <textarea id="ir3" style="resize:none" name="ir3x" cols="5" rows="1" readonly>0</textarea>
+            </div>
+          </div>
           <hr>
-          <h4>Press User Button To Activate LED 13 and Buzzer</h4>
+          <p class="led-instructions">Press User Button To Activate LED 13 and Buzzer</p>
       </div>
       <div class="col-md-4 col-sm-6 panel">
           <h2>Right Motor</h2>
@@ -121,28 +131,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
                   [No canvas support]
               </canvas>
             </div>
-          <div>
-              <br>
-              <b>Select speed by clicking</b>
-              <br>
-              <b> on the desired speed above,</b>
-              <br>
-              <b>then click <em>Submit Now.</em></b>
-              <br>
-              <b>Both motors will updated.</b>
-              <br>
-              <form name="right_motor" action="">
-                  <fieldset style="width: 200px; height: 140px;">
-                      <legend>Motor Operation</legend>
-                      <input type="radio" name="rightMotor" checked="checked" value="Coast"/>Coast<br/>
-                      <input type="radio" name="rightMotor" value="Brake"/>Brake<br/>
-                      <input type="radio" name="rightMotor" value="Forward"/>Run Forward <br/>
-                      <input type="radio" name="rightMotor" value="Reverse"/>Run Reverse<br/>
-                      <input type="radio" name="rightMotor" value="NoChange"/>No Change<br/>
-                      <input type="button" value="Submit Now" onclick="motorControl();"/>
-                  </fieldset>
-              </form>
           </div>
+          <p class="gauge-instructions">
+            Select speed by clicking on the desired speed above, then click <em>Submit Now.</em> Both motors will updated.
+          </p>
+          <form name="right_motor" action="">
+              <fieldset>
+                  <legend>Motor Operation</legend>
+                  <input type="radio" name="rightMotor" checked="checked" value="Coast"/>Coast<br/>
+                  <input type="radio" name="rightMotor" value="Brake"/>Brake<br/>
+                  <input type="radio" name="rightMotor" value="Forward"/>Run Forward <br/>
+                  <input type="radio" name="rightMotor" value="Reverse"/>Run Reverse<br/>
+                  <input type="radio" name="rightMotor" value="NoChange"/>No Change<br/>
+                  <input type="button" class="btn btn-success btn-sm" value="Submit Now" onclick="motorControl();"/>
+              </fieldset>
+          </form>
+        </div>
       </div>
       <em>
           <div class='plug-dev'>This page was crafted with <a href=" https://github.com/MrYsLab/pymata-aio">pymata_aio</a>

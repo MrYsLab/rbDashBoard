@@ -83,6 +83,7 @@ gauge.canvas.onclick = function (e) {
   var obj = e.target.__object__;
   //noinspection UnnecessaryLocalVariableJS
   var value = obj.getValue(e);
+  console.log(value)
   obj.value = value;
   leftSpeed = value;
   obj.grow();

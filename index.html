@@ -35,14 +35,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
           <h2>Left Motor</h2>
           <div class="row">
             <div class="col-xs-6">
-              <canvas id="cvs" width="220" height="220" style="background-color: black; border-radius: 125px;
-                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
+              <canvas id="cvs" width="220" height="220" class="gauge">
                   [No canvas support]
               </canvas>
             </div>
             <div class="col-xs-6">
-              <canvas id="cvs2" width="220" height="220" style="background-color: black; border-radius: 125px;
-                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
+              <canvas id="cvs2" width="220" height="220" class="gauge">
                   [No canvas support]
               </canvas>
             </div>
@@ -65,7 +63,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
           </div>
 
       </div>
-      <div class="col-md-4 col-sm-6 panel">
+      <div class="col-md-4 col-md-push-4 col-sm-6 panel">
+        <h2>Right Motor</h2>
+        <div class="row">
+          <div class="col-xs-6">
+            <canvas id="cvsr" width="220" height="220" class="gauge">
+                [No canvas support]
+            </canvas>
+          </div>
+          <div class="col-xs-6">
+            <canvas id="cvsr2" width="220" height="220" class="gauge">
+                [No canvas support]
+            </canvas>
+          </div>
+        </div>
+        <p class="gauge-instructions">
+          Select speed by clicking on the desired speed above, then click <em>Submit Now.</em> Both motors will updated.
+        </p>
+        <form name="right_motor" action="">
+            <fieldset>
+                <legend>Motor Operation</legend>
+                <input type="radio" name="rightMotor" checked="checked" value="Coast"/>Coast<br/>
+                <input type="radio" name="rightMotor" value="Brake"/>Brake<br/>
+                <input type="radio" name="rightMotor" value="Forward"/>Run Forward <br/>
+                <input type="radio" name="rightMotor" value="Reverse"/>Run Reverse<br/>
+                <input type="radio" name="rightMotor" value="NoChange"/>No Change<br/>
+                <input type="button" class="btn btn-success btn-sm" value="Submit Now" onclick="motorControl();"/>
+            </fieldset>
+        </form>
+      </div>
+      <div class="col-md-4 col-md-pull-4 col-sm-6 panel">
           <h2>Accelerometer (g's)</h2>
           <div class="row">
             <div class="col-xs-4">
@@ -116,43 +143,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
           <hr>
           <p class="led-instructions">Press User Button To Activate LED 13 and Buzzer</p>
       </div>
-      <div class="col-md-4 col-sm-6 panel">
-          <h2>Right Motor</h2>
-          <div class="row">
-            <div class="col-xs-6">
-              <canvas id="cvsr" width="220" height="220" style="background-color: black; border-radius: 125px;
-                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
-                  [No canvas support]
-              </canvas>
-            </div>
-            <div class="col-xs-6">
-              <canvas id="cvsr2" width="220" height="220" style="background-color: black; border-radius: 125px;
-                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
-                  [No canvas support]
-              </canvas>
-            </div>
-          </div>
-          <p class="gauge-instructions">
-            Select speed by clicking on the desired speed above, then click <em>Submit Now.</em> Both motors will updated.
-          </p>
-          <form name="right_motor" action="">
-              <fieldset>
-                  <legend>Motor Operation</legend>
-                  <input type="radio" name="rightMotor" checked="checked" value="Coast"/>Coast<br/>
-                  <input type="radio" name="rightMotor" value="Brake"/>Brake<br/>
-                  <input type="radio" name="rightMotor" value="Forward"/>Run Forward <br/>
-                  <input type="radio" name="rightMotor" value="Reverse"/>Run Reverse<br/>
-                  <input type="radio" name="rightMotor" value="NoChange"/>No Change<br/>
-                  <input type="button" class="btn btn-success btn-sm" value="Submit Now" onclick="motorControl();"/>
-              </fieldset>
-          </form>
-        </div>
-      </div>
-      <em>
-          <div class='plug-dev'>This page was crafted with <a href=" https://github.com/MrYsLab/pymata-aio">pymata_aio</a>
-          </div>
-      </em>
     </div>
+    <em>
+        <div class='plug-dev'>This page was crafted with <a href=" https://github.com/MrYsLab/pymata-aio">pymata_aio</a>
+        </div>
+    </em>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

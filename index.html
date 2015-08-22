@@ -28,106 +28,127 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
     <link rel="stylesheet" type="text/css" href="css/redbotDashboard.css">
 </head>
 <body>
-<h1><a href="http://"><img src="images/MrYLogo.png" height="42" width="42"></a> RedBot DashBoard</h1>
-<div class="main-div">
-    <div class="left-panel">
-        <h2>Left Motor</h2>
-        <canvas id="cvs" width="220" height="220" style="background-color: black; border-radius: 125px;
-                box-shadow: 0 0 25px gray; border: 5px solid #ddd">
-            [No canvas support]
-        </canvas>
-        <canvas id="cvs2" width="220" height="220" style="background-color: black; border-radius: 125px;
-                box-shadow: 0 0 25px gray; border: 5px solid #ddd">
-            [No canvas support]
-        </canvas>
-        <div>
-            <br>
-            <b>Select speed by clicking</b>
-            <br>
-            <b> on the desired speed above,</b>
-            <br>
-            <b>then click <em>Submit Now.</em></b>
-            <br>
-            <b>Both motors will updated.</b>
-            <br>
-            <form name="left_motor" action="">
-                <fieldset style="width: 200px; height: 140px;">
-                    <legend>Motor Operation</legend>
-                    <input type="radio" name="leftMotor" checked="checked" value="Coast"/>Coast<br/>
-                    <input type="radio" name="leftMotor" value="Brake"/>Brake<br/>
-                    <input type="radio" name="leftMotor" value="Forward"/>Run Forward <br/>
-                    <input type="radio" name="leftMotor" value="Reverse"/>Run Reverse<br/>
-                    <input type="radio" name="leftMotor" value="NoChange"/>No Change<br/>
-                    <input type="button" value="Submit Now" onclick="motorControl();"/>
-                </fieldset>
-            </form>
-        </div>
-        <br> <br>
+<div class="container-fluid main">
+  <h1><img src="images/MrYLogo.png" height="42" width="42"> RedBot DashBoard</h1>
+  <div class="row">
+      <div class="col-md-4 col-sm-6 panel">
+          <h2>Left Motor</h2>
+          <div class="row">
+            <div class="col-xs-6">
+              <canvas id="cvs" width="220" height="220" style="background-color: black; border-radius: 125px;
+                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
+                  [No canvas support]
+              </canvas>
+            </div>
+            <div class="col-xs-6">
+              <canvas id="cvs2" width="220" height="220" style="background-color: black; border-radius: 125px;
+                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
+                  [No canvas support]
+              </canvas>
+            </div>
+          </div>
+          <div>
+              <br>
+              <b>Select speed by clicking</b>
+              <br>
+              <b> on the desired speed above,</b>
+              <br>
+              <b>then click <em>Submit Now.</em></b>
+              <br>
+              <b>Both motors will updated.</b>
+              <br>
+              <form name="left_motor" action="">
+                  <fieldset style="width: 200px; height: 140px;">
+                      <legend>Motor Operation</legend>
+                      <input type="radio" name="leftMotor" checked="checked" value="Coast"/>Coast<br/>
+                      <input type="radio" name="leftMotor" value="Brake"/>Brake<br/>
+                      <input type="radio" name="leftMotor" value="Forward"/>Run Forward <br/>
+                      <input type="radio" name="leftMotor" value="Reverse"/>Run Reverse<br/>
+                      <input type="radio" name="leftMotor" value="NoChange"/>No Change<br/>
+                      <input type="button" value="Submit Now" onclick="motorControl();"/>
+                  </fieldset>
+              </form>
+          </div>
+          <br> <br>
+      </div>
+      <div class="col-md-4 col-sm-6 panel">
+          <h2>Accelerometer (g's)</h2>
+          <div class="row">
+            <div class="col-xs-4">
+              <canvas id="x" width="100" height="400">
+                  [No canvas support]
+              </canvas>
+            </div>
+            <div class="col-xs-4">
+              <canvas id="y" width="100" height="400">
+                  [No canvas support]
+              </canvas>
+            </div>
+            <div class="col-xs-4">
+              <canvas id="z" width="100" height="400">
+                  [No canvas support]
+              </canvas>
+            </div>
+          </div>
+          <hr>
+          <h3>Bumpers</h3>
+          <textarea style="resize: none;" id="abump" name="bumpa" cols="12" rows="1" readonly>Accelerometer</textarea>
+          <textarea style="resize: none;" id="lbump" name="bumpl" cols="12" rows="1" readonly>Left Bumper</textarea>
+          <textarea style="resize: none;" id="rbump" name="bumpr" cols="12" rows="1" readonly>Right Bumper</textarea>
+          <hr>
+          <h2>IR Sensors</h2>
+          <b>Left:</b>
+          <textarea id="ir1" style="resize:none" name="ir1x" cols="5" rows="1" readonly>0</textarea>
+          <b>Center:</b>
+          <textarea id="ir2" style="resize:none" name="ir2x" cols="5" rows="1" readonly>0</textarea>
+          <b>Right:</b>
+          <textarea id="ir3" style="resize:none" name="ir3x" cols="5" rows="1" readonly>0</textarea>
+          <hr>
+          <h4>Press User Button To Activate LED 13 and Buzzer</h4>
+      </div>
+      <div class="col-md-4 col-sm-6 panel">
+          <h2>Right Motor</h2>
+          <div class="row">
+            <div class="col-xs-6">
+              <canvas id="cvsr" width="220" height="220" style="background-color: black; border-radius: 125px;
+                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
+                  [No canvas support]
+              </canvas>
+            </div>
+            <div class="col-xs-6">
+              <canvas id="cvsr2" width="220" height="220" style="background-color: black; border-radius: 125px;
+                      box-shadow: 0 0 25px gray; border: 5px solid #ddd">
+                  [No canvas support]
+              </canvas>
+            </div>
+          <div>
+              <br>
+              <b>Select speed by clicking</b>
+              <br>
+              <b> on the desired speed above,</b>
+              <br>
+              <b>then click <em>Submit Now.</em></b>
+              <br>
+              <b>Both motors will updated.</b>
+              <br>
+              <form name="right_motor" action="">
+                  <fieldset style="width: 200px; height: 140px;">
+                      <legend>Motor Operation</legend>
+                      <input type="radio" name="rightMotor" checked="checked" value="Coast"/>Coast<br/>
+                      <input type="radio" name="rightMotor" value="Brake"/>Brake<br/>
+                      <input type="radio" name="rightMotor" value="Forward"/>Run Forward <br/>
+                      <input type="radio" name="rightMotor" value="Reverse"/>Run Reverse<br/>
+                      <input type="radio" name="rightMotor" value="NoChange"/>No Change<br/>
+                      <input type="button" value="Submit Now" onclick="motorControl();"/>
+                  </fieldset>
+              </form>
+          </div>
+      </div>
+      <em>
+          <div class='plug-dev'>This page was crafted with <a href=" https://github.com/MrYsLab/pymata-aio">pymata_aio</a>
+          </div>
+      </em>
     </div>
-    <div class="accel-panel">
-        <h2>Accelerometer (g's)</h2>
-        <canvas id="x" width="100" height="400">
-            [No canvas support]
-        </canvas>
-        <canvas id="y" width="100" height="400">
-            [No canvas support]
-        </canvas>
-        <canvas id="z" width="100" height="400">
-            [No canvas support]
-        </canvas>
-        <hr>
-        <h3>Bumpers</h3>
-        <textarea style="resize: none;" id="abump" name="bumpa" cols="12" rows="1" readonly>Accelerometer</textarea>
-        <textarea style="resize: none;" id="lbump" name="bumpl" cols="12" rows="1" readonly>Left Bumper</textarea>
-        <textarea style="resize: none;" id="rbump" name="bumpr" cols="12" rows="1" readonly>Right Bumper</textarea>
-        <hr>
-        <h2>IR Sensors</h2>
-        <b>Left:</b>
-        <textarea id="ir1" style="resize:none" name="ir1x" cols="5" rows="1" readonly>0</textarea>
-        <b>Center:</b>
-        <textarea id="ir2" style="resize:none" name="ir2x" cols="5" rows="1" readonly>0</textarea>
-        <b>Right:</b>
-        <textarea id="ir3" style="resize:none" name="ir3x" cols="5" rows="1" readonly>0</textarea>
-        <hr>
-        <h4>Press User Button To Activate LED 13 and Buzzer</h4>
-    </div>
-    <div class="right-panel">
-        <h2>Right Motor</h2>
-        <canvas id="cvsr" width="220" height="220" style="background-color: black; border-radius: 125px;
-                box-shadow: 0 0 25px gray; border: 5px solid #ddd">
-            [No canvas support]
-        </canvas>
-        <canvas id="cvsr2" width="220" height="220" style="background-color: black; border-radius: 125px;
-                box-shadow: 0 0 25px gray; border: 5px solid #ddd">
-            [No canvas support]
-        </canvas>
-        <div>
-            <br>
-            <b>Select speed by clicking</b>
-            <br>
-            <b> on the desired speed above,</b>
-            <br>
-            <b>then click <em>Submit Now.</em></b>
-            <br>
-            <b>Both motors will updated.</b>
-            <br>
-            <form name="right_motor" action="">
-                <fieldset style="width: 200px; height: 140px;">
-                    <legend>Motor Operation</legend>
-                    <input type="radio" name="rightMotor" checked="checked" value="Coast"/>Coast<br/>
-                    <input type="radio" name="rightMotor" value="Brake"/>Brake<br/>
-                    <input type="radio" name="rightMotor" value="Forward"/>Run Forward <br/>
-                    <input type="radio" name="rightMotor" value="Reverse"/>Run Reverse<br/>
-                    <input type="radio" name="rightMotor" value="NoChange"/>No Change<br/>
-                    <input type="button" value="Submit Now" onclick="motorControl();"/>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-    <em>
-        <div class='plug-dev'>This page was crafted with <a href=" https://github.com/MrYsLab/pymata-aio">pymata_aio</a>
-        </div>
-    </em>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

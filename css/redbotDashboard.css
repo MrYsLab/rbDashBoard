@@ -7,7 +7,7 @@ body {
 }
 
 .panel {
-    border: 2px solid darkblue;
+    border: 2px solid #393563;
 }
 
 @media (min-width: 992px) {
@@ -53,9 +53,12 @@ h1, h2, h3, .led-instructions {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1220px) {
   h2, h3 {
     font-size: 24px;
+  }
+  textarea {
+    font-size: 12px;
   }
 }
 

@@ -24,17 +24,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
     <title>RedBot Dashboard</title>
     <meta name="viewport" content="width=640, initial-scale=1.0"/>
     <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/redbotDashboard.css">
 </head>
 <body>
-
-<h1><a href="http://"><img src="./images/MrYLogo.png" height="42" width="42"></a> RedBot DashBoard</h1>
-
+<h1><a href="http://"><img src="images/MrYLogo.png" height="42" width="42"></a> RedBot DashBoard</h1>
 <div class="main-div">
-
     <div class="left-panel">
         <h2>Left Motor</h2>
-
         <canvas id="cvs" width="220" height="220" style="background-color: black; border-radius: 125px;
                 box-shadow: 0 0 25px gray; border: 5px solid #ddd">
             [No canvas support]
@@ -131,16 +128,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
         <div class='plug-dev'>This page was crafted with <a href=" https://github.com/MrYsLab/pymata-aio">pymata_aio</a>
         </div>
     </em>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="libs/RGraph/libraries/RGraph.common.core.js"></script>
-<script src="libs/RGraph/libraries/RGraph.common.dynamic.js"></script>
-<script src="libs/RGraph/libraries/RGraph.common.effects.js"></script>
-<script src="libs/RGraph/libraries/RGraph.gauge.js"></script>
-<script src="libs/RGraph/libraries/RGraph.bar.js"></script>
-<script src="libs/RGraph/libraries/RGraph.vprogress.js"></script>
-<script src="js/gauges.js"></script>
-<script src="js/accelerometerbars.js"></script>
-<script src="js/socket_connection.js"></script>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="libs/RGraph/libraries/RGraph.common.core.js"></script>
+  <script src="libs/RGraph/libraries/RGraph.common.dynamic.js"></script>
+  <script src="libs/RGraph/libraries/RGraph.common.effects.js"></script>
+  <script src="libs/RGraph/libraries/RGraph.gauge.js"></script>
+  <script src="libs/RGraph/libraries/RGraph.bar.js"></script>
+  <script src="libs/RGraph/libraries/RGraph.vprogress.js"></script>
+  <script src="js/gauges.js"></script>
+  <script src="js/accelerometerbars.js"></script>
+  <script src="js/socket_connection.js"></script>
 </body >
 </html>

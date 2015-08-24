@@ -105,9 +105,11 @@ if __name__ == '__main__':
 
     rbc = RedBotController(my_core)
 
-    loop.run_until_complete(rbc.init_red_board())
+    # loop.run_until_complete(rbc.init_red_board())
     factory.protocol.rb_control = rbc
     factory.protocol.my_core = my_core
+    loop.run_until_complete(rbc.init_red_board())
+
 
     new = 2
 

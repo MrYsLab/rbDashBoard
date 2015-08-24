@@ -82,8 +82,9 @@ gauge.draw();
 gauge.canvas.onclick = function (e) {
   var obj = e.target.__object__;
   //noinspection UnnecessaryLocalVariableJS
+  obj.centerx = $(this).outerWidth()/2
+  obj.centery = $(this).outerHeight()/2
   var value = obj.getValue(e);
-  console.log(value)
   obj.value = value;
   leftSpeed = value;
   obj.grow();
@@ -242,6 +243,8 @@ gauge3.draw();
 gauge3.canvas.onclick = function (e) {
   var obj = e.target.__object__;
   //noinspection UnnecessaryLocalVariableJS,UnnecessaryLocalVariableJS
+  obj.centerx = $(this).outerWidth()/2
+  obj.centery = $(this).outerHeight()/2
   var value = obj.getValue(e);
   obj.value = value;
   rightSpeed = value;

@@ -163,15 +163,18 @@ class RedBotController:
 
     @asyncio.coroutine
     def get_accel_data(self):
-        while True:
-            avail = yield from self.accel.available()
-            if not avail:
-                yield from asyncio.sleep(.001)
-                continue
-            yield from self.accel.read(self.accel_axis_callback)
-            yield from self.accel.read_portrait_landscape(self.accel_pl_callback)
-            yield from self.accel.read_tap(self.accel_tap_callback)
+        #while True:
+        avail = yield from self.accel.available()
+        # print('trying')
+        if not avail:
             yield from asyncio.sleep(.001)
+            # continue
+            return
+        # print('getting data')
+        yield from self.accel.read(self.accel_axis_callback)
+        yield from self.accel.read_portrait_landscape(self.accel_pl_callback)
+        yield from self.accel.read_tap(self.accel_tap_callback)
+        yield from asyncio.sleep(.001)
 
     @asyncio.coroutine
     def left_bumper_callback(self, data):
@@ -243,6 +246,7 @@ class RedBotController:
         dataz = float("{0:.2f}".format(data[5]))
 
         msg = json.dumps({"info": "axis", "x": datax, "y": datay, "z": dataz})
+        print(msg)
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
         asyncio.sleep(.001)

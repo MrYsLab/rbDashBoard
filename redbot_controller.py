@@ -246,7 +246,6 @@ class RedBotController:
         dataz = float("{0:.2f}".format(data[5]))
 
         msg = json.dumps({"info": "axis", "x": datax, "y": datay, "z": dataz})
-        print(msg)
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
         asyncio.sleep(.001)

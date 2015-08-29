@@ -110,7 +110,6 @@ if __name__ == '__main__':
     factory.protocol.my_core = my_core
     loop.run_until_complete(rbc.init_red_board())
 
-
     new = 2
 
     url = "http://MrYsLab.github.io/rbDashBoard"

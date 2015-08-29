@@ -75,9 +75,6 @@ class RedBotController:
         yield from self.board.set_pin_mode(self.pins["IR_SENSOR_3"], Constants.ANALOG, self.ir3_callback,
                                            Constants.CB_TYPE_ASYNCIO)
 
-        yield from self.board.set_pin_mode(3, Constants.INPUT, self.left_bumper_callback, Constants.CB_TYPE_ASYNCIO)
-        yield from self.board.digital_write(3, 1)
-
         yield from self.board.set_pin_mode(self.pins["LED"], Constants.OUTPUT)
 
         # motors

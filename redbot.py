@@ -105,7 +105,7 @@ if __name__ == '__main__':
     parser.add_argument("-wait", dest="wait", default="2", help="Arduino wait time")
     parser.add_argument("-ipAddr", dest="ip_addr", default="None", help="Arduino IP Address (WiFly)")
     parser.add_argument("-ipPort", dest="ip_port", default="2000", help="Arduino IP port (WiFly)")
-    parser.add_argument("-handshake", dest="handshake", default="*HELLO*", help="IP Device Handshake String")
+    parser.add_argument("-handshake", dest="handshake", default="*HELLO*", help="IP Device Handshake String (WiFly")
 
     args = parser.parse_args()
     if args.com == "None":

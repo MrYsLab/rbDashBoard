@@ -146,6 +146,11 @@ if __name__ == '__main__':
 
     url = "http://MrYsLab.github.io/rbDashBoard"
 
+    #url = "http://localhost:8000"  # Useful when doing development
+    # Reminder for developers: Use python -m SimpleHTTPServer from this folder
+    # to serve the index.html to use the local copy for development.
+
+
     webbrowser.open(url, new=new)
 
     try:

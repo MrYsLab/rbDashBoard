@@ -3,11 +3,8 @@ var socket = null;
 var isopen = false;
 
 var t, z;
-
-var d = new Date();
-var start_time = d.getTime();
-var time_sample;
-var diff_time;
+var ENCODER_SAMPLING_SIZE = 10;
+var encoder_counter = 0, prev_time_ms, left_counter = 0, right_counter = 0;
 
 function motorControl() {
   var formdata = $('form').serialize();
@@ -68,13 +65,28 @@ $(document).ready(function () {
       vprogressz.draw();
       break;
       case 'encoders':
-      var left = msg['left'];
-      var right = msg['right'];
-      // console.log('left = ' + left + 'right = ' + right);
-      gauge4.value = right;
-      gauge4.draw();
-      gauge2.value = left;
-      gauge2.draw();
+        encoder_counter++;
+        left_counter += msg['left'];
+        right_counter += msg['right'];
+        if (encoder_counter % ENCODER_SAMPLING_SIZE == 0) {
+          // Take a sample of 10 readings to make the needle less jumpy.
+          var d = new Date();
+          var current_time = d.getTime();
+          var time_delta_ms = current_time - prev_time_ms;
+          prev_time_ms = current_time;
+          var left = left_counter * 100 / time_delta_ms;
+          var right = right_counter * 100 / time_delta_ms;
+          //console.log('left = ' + left + '   right = ' + right + ' delta used ' + time_delta_ms);
+          encoder_counter = 0;
+          left_counter = 0;
+          right_counter = 0;
+
+          gauge4.value = right;
+          gauge4.draw();
+          gauge2.value = left;
+          gauge2.draw();
+        }
+
       break;
       case 'ir1':
       val = msg['data'];

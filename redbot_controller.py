@@ -75,9 +75,6 @@ class RedBotController:
         yield from self.board.set_pin_mode(self.pins["IR_SENSOR_3"], Constants.ANALOG, self.ir3_callback,
                                            Constants.CB_TYPE_ASYNCIO)
 
-        yield from self.board.set_pin_mode(3, Constants.INPUT, self.left_bumper_callback, Constants.CB_TYPE_ASYNCIO)
-        yield from self.board.digital_write(3, 1)
-
         yield from self.board.set_pin_mode(self.pins["LED"], Constants.OUTPUT)
 
         # motors
@@ -159,15 +156,12 @@ class RedBotController:
     @asyncio.coroutine
     def send_msg(self, msg):
         self.socket.sendMessage(msg)
-        yield from asyncio.sleep(1)
+        yield from asyncio.sleep(.01)
 
     @asyncio.coroutine
     def get_accel_data(self):
-        while True:
-            avail = yield from self.accel.available()
-            if not avail:
-                yield from asyncio.sleep(.001)
-                continue
+        avail = yield from self.accel.available()
+        if avail:
             yield from self.accel.read(self.accel_axis_callback)
             yield from self.accel.read_portrait_landscape(self.accel_pl_callback)
             yield from self.accel.read_tap(self.accel_tap_callback)
@@ -201,28 +195,24 @@ class RedBotController:
                     msg = json.dumps({"info": "r_bump", "data": 0})
                     self.socket.sendMessage(msg.encode('utf8'))
                     self.rbump_wait = False
-        yield from asyncio.sleep(.001)
 
     @asyncio.coroutine
     def ir1_callback(self, data):
         msg = json.dumps({"info": "ir1", "data": data[1]})
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
-        yield from asyncio.sleep(.001)
 
     @asyncio.coroutine
     def ir2_callback(self, data):
         msg = json.dumps({"info": "ir2", "data": data[1]})
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
-        yield from asyncio.sleep(.001)
 
     @asyncio.coroutine
     def ir3_callback(self, data):
         msg = json.dumps({"info": "ir3", "data": data[1]})
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
-        yield from asyncio.sleep(.001)
 
     @asyncio.coroutine
     def button_callback(self, data):
@@ -233,7 +223,6 @@ class RedBotController:
                 yield from self.board.digital_write(self.pins["LED"], 1)
                 yield from asyncio.sleep(.3)
                 yield from self.board.digital_write(self.pins["LED"], 0)
-        yield from asyncio.sleep(.001)
 
     @asyncio.coroutine
     def accel_axis_callback(self, data):
@@ -245,7 +234,6 @@ class RedBotController:
         msg = json.dumps({"info": "axis", "x": datax, "y": datay, "z": dataz})
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
-        asyncio.sleep(.001)
 
     @asyncio.coroutine
     def accel_pl_callback(self, data):
@@ -264,7 +252,6 @@ class RedBotController:
         msg = json.dumps({"info": "pl", "data": port_land})
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
-        asyncio.sleep(.001)
 
     @asyncio.coroutine
     def accel_tap_callback(self, data):
@@ -272,18 +259,16 @@ class RedBotController:
             msg = json.dumps({"info": "tap", "data": data})
             if self.socket:
                 self.socket.sendMessage(msg.encode('utf8'))
-                yield from asyncio.sleep(1)
+                yield from asyncio.sleep(.5)
             msg = json.dumps({"info": "tap", "data": 0})
             if self.socket:
                 self.socket.sendMessage(msg.encode('utf8'))
-        asyncio.sleep(.001)
 
     @asyncio.coroutine
     def left_encoder_callback(self, data):
         msg = json.dumps({"info": "encoders", "left": data[0], "right": data[1]})
         if self.socket:
             self.socket.sendMessage(msg.encode('utf8'))
-        asyncio.sleep(.1)
 
     def establish_socket(self, socket):
         self.socket = socket

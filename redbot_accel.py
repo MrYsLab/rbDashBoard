@@ -433,21 +433,33 @@ class RedBotAccel:
         zlsb = xyz[5]
 
         # OR the 2 pieces together, shift 4 places to get 12 bits
-        xa = (xmsb << 8 | xlsb) >> 4
+        x = int((xmsb << 8) | (xlsb )) >> 4
 
-        ya = (ymsb << 8 | ylsb) >> 4
+        if xmsb > 127:
+            x = 4095 - x
+            x = ~x + 1
 
-        za = (zmsb << 8 | zlsb) >> 4
+        y = int(((ymsb << 8) | (ylsb))) >> 4
 
-        cx = float(xa) / float(2048) * float(self.scale)
-        cy = float(ya) / float(2048) * float(self.scale)
-        cz = float(za) / float(2048) * float(self.scale)
+        if ymsb > 127:
+            y = 4095 - y
+            y = ~y + 1
+
+        z = int((zmsb << 8) | (zlsb)) >> 4
+
+        if zmsb > 127:
+            z = 4095 - z
+            z = ~z + 1
+
+        cx = x / 2048 * self.scale
+        cy = y / 2048 * self.scale
+        cz = z / 2048 * self.scale
 
         if callback:
-            yield from callback([xa, ya, za, cx, cy, cz])
+            yield from callback([x, y, z, cx, cy, cz])
         yield from asyncio.sleep(.001)
 
-        return [xa, ya, za, cx, cy, cz]
+        return [x, y, z, cx, cy, cz]
 
     @asyncio.coroutine
     def wait_for_read_result(self):
